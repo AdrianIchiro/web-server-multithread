@@ -17,13 +17,11 @@ def handle_request(client_socket):
         content = fin.read()
         fin.close()
 
-    # header response jika sukses coyyy
         response = 'HTTP/1.1 200 OK\n'
         response += 'Content-Type: text/html\n'
         response += '\n'
         response += content
     except FileNotFoundError:
-    # header response kalo gak ketemu file indexnya
         response = 'HTTP/1.1 404 Not Found\n'
         response += 'Content-Type: text/html\n'
         response += '\n'
@@ -34,7 +32,7 @@ def handle_request(client_socket):
 
 def main():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind(('0.0.0.0', 2222))
+    server_socket.bind(('0.0.0.0', 2222)) # ip address, port
     server_socket.listen(5)
     print("Server berjalan.....")
 
@@ -46,8 +44,6 @@ def main():
         client_handler.start()
 
 
-
-# biar gak di kira function
 if __name__ == "__main__":
     main()
 
